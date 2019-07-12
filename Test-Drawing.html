@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<img class="svg" src="Simbols/1.svg" alt="Microsoft" width="350" height="350">
+	<div id="drawing">
+  <script type="text/javascript">
+    // initialize SVG.js
+	var draw = SVG('drawing').size(300, 300)
+	// draw pink square
+	draw.rect(100, 100).move(100, 50).fill('#f06')
+	draw.rect(100, 100).move(150, 100).fill('#000')
+	var image = draw.image('Simbols/1.svg', 50, 50)
+	image.click(function() {
+		colour = "#" + (Math.round(Math.random()*4095)).toString(16)
+	  	this.fill({ color: colour })
+	  	console.log(colour)
+	})
+	//var rect = draw.rect(100, 100).attr({ fill: '#f06' })
+
+
+
+	$(function(){
+    jQuery('img.svg').each(function(){
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
+    
+        jQuery.get(imgURL, function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+    
+            // Add replaced image's ID to the new SVG
+            if(typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if(typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass+' replaced-svg');
+            }
+    
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+            
+            // Check if the viewport is set, else we gonna set it if we can.
+            if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+                $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+            }
+    		console.log($svg.attr('alt'))
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+    
+        }, 'xml');
+    
+    });
+});
+  </script>
+  <style type="text/css">
+  svg {width: 350px; height: 350px;}
+svg path {fill: #0f0 !important;}
+  </style>
+	</div>
+	</body>
+</html>

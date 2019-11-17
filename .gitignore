@@ -1,0 +1,4 @@
+#ignore mid files for examples
+*.mid
+.idea/
+*.pyc

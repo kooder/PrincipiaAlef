@@ -1,0 +1,35 @@
+{
+    "track": [
+        {
+            "id": "/int",
+            "instrument": "/int: midi id",
+            "tie": "/int:instrument id",
+            "#tie comment": "Ex. On piano, each hand is in one track",
+            "instrument_name": "Instrument name",
+            "order": "/int",
+            "sections": [
+                {
+                    "id": "/int",
+                    "name": "section name",
+                    "tempo": {
+                        "numerator": "/int",
+                        "denominator": "/int"
+                    },
+                    "compasses": [
+                        {
+                            "element": {
+                                "tie_in_front": "/bool <Think more on this>",
+                                "duration": "/int",
+                                "notes": {
+                                    "note": "/int",
+                                    "staccato": "/bool",
+                                    "tie_in_front": "/bool <Think more on this>"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

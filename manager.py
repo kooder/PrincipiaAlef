@@ -55,5 +55,4 @@ class Manager(object):
             for lost_variable in data_missed:
                 if self.__getattribute__(lost_variable) is None:
                     error_msg += "\t%s\n" % lost_variable
-            raise  Exception(error_msg)
-
+            raise Exception(error_msg)

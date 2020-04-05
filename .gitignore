@@ -2,3 +2,5 @@
 *.mid
 .idea/
 *.pyc
+tkinter.py
+.gitignore

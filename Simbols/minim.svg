@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="28.210625mm"
-   height="56.130215mm"
-   viewBox="0 0 25.389563 50.517191"
+   width="55.961109mm"
+   height="55.961105mm"
+   viewBox="0 0 50.365001 50.364991"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="1.svg">
+   sodipodi:docname="minim.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="-286.93939"
-     inkscape:cy="124.06678"
+     inkscape:zoom="2"
+     inkscape:cx="248.3452"
+     inkscape:cy="149.4422"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -61,12 +61,20 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-83.911633,-25.341714)">
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 84.044276,25.47533 h 12.029958 c 16.935086,-0.21131 17.792686,24.864851 0.531709,25.123335 -16.882835,0.42167 -16.615347,25.518905 0,25.123336 h 12.561667"
-       id="path853"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
+     transform="translate(-84.061334,-181.13719)">
+    <g
+       id="g936"
+       transform="translate(-11.47142,76.476133)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path930"
+         d="M 120.71525,155.02605 V 104.77938"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path932"
+         d="m 145.83859,104.77938 -50.246673,25.12333 50.246673,10e-6"
+         style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
   </g>
 </svg>

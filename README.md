@@ -1,2 +1,2 @@
 # PrincipiaAlef
-It's a web page that works as a musical editor using the principia alef nomenclature.
+It's a python programs that converts midi files to music sheets that use the principia alef nomenclature.

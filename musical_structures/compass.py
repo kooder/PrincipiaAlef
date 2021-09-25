@@ -1,6 +1,6 @@
-import midi
+import mido
 
-from element import *
+from musical_structures.element import *
 
 
 class Compass(object):

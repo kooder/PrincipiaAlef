@@ -2,5 +2,9 @@
 *.mid
 .idea/
 *.pyc
-tkinter.py
+venv/
+tkinter_test.py
 .gitignore
+*.pdf
+*.ps
+.vscode

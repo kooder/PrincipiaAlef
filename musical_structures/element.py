@@ -1,6 +1,6 @@
-import midi
+import mido
 
-from note import *
+from musical_structures.note import *
 
 
 class Element(object):

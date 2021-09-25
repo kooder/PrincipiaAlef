@@ -1,6 +1,6 @@
-import midi
+import mido
 
-from section import *
+from musical_structures.section import *
 
 
 class Track(object):

@@ -1,6 +1,10 @@
-#ignore mid files for examples
+#ignore mid files for examples.
 *.mid
 .idea/
 *.pyc
-tkinter.py
+venv/
+tkinter_test.py
 .gitignore
+*.pdf
+*.ps
+.vscode

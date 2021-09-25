@@ -1,4 +1,5 @@
-import midi
+import mido
+import patter_policy as PATPOL
 
 
 class Manager(object):
@@ -7,7 +8,7 @@ class Manager(object):
                  path=None,
                  pattern=None):
         if path:
-            self.pattern = midi.read_midifile(path)
+            self.pattern = mido.MidiFile(path)
         elif pattern:
             self.pattern = pattern
         else:
@@ -18,41 +19,38 @@ class Manager(object):
 
         The data that is saved is:
             Title
-            Format
-            Resolution
             Tick_relative
             Metronome
             First Numerator with it's Denominator
         """
 
-        self.format = self.pattern.format
-        self.resolution = self.pattern.resolution
-        self.tick_relative = self.pattern.tick_relative
+        self.length = self.pattern.length
+        self.tick_relative = self.pattern.ticks_per_beat
 
         self.numerator = None
         self.denominator = None
         self.metronome = None
         self.title = None
 
-        breaker = [False, False]
-        for track in self.pattern:
+        #self.title = self.pattern
+        breaker = False
+        for track in self.pattern.tracks:
+            if breaker:
+                break
             for event in track:
-                if isinstance(event, midi.TimeSignatureEvent):
-                    self.numerator = event.numerator
-                    self.denominator = event.denominator
-                    self.metronome = event.metronome
-                    breaker[0] = True
-                if isinstance(event, midi.TrackNameEvent):
-                    self.title = event.text
-                    breaker[1] = True
-                # Stop looking for the metadata
-                if breaker == [True, True]:
-                    break
+                if event.is_meta:
+                    if event.type == PATPOL.TIME_SIGNATURE:
+                        self.numerator = event.numerator
+                        self.denominator = event.denominator
+                        self.metronome = event.notated_32nd_notes_per_beat
+                        # Stop looking for the metadata
+                        breaker = True
+                        break
         # Not all the data was found
-        if breaker != [True, True]:
-            data_missed = ["numerator", "denominator", "metronome", "title"]
+        if not breaker:
+            data_requested = [PATPOL.NUMERATOR, PATPOL.DENOMINATOR, PATPOL.METRONOME, PATPOL.TITLE]
             error_msg = "Data that was not found:\n"
-            for lost_variable in data_missed:
+            for lost_variable in data_requested:
                 if self.__getattribute__(lost_variable) is None:
                     error_msg += "\t%s\n" % lost_variable
             raise Exception(error_msg)

@@ -1,6 +1,6 @@
-import midi
+import mido
 
-from track import *
+from musical_structures.track import *
 
 
 class Song(object):

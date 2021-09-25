@@ -1,6 +1,6 @@
-import midi
+import mido
 
-from compass import *
+from musical_structures.compass import *
 
 
 class Section(object):

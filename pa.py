@@ -37,16 +37,18 @@ melody = pa_manager.pattern.tracks[1]
 # Try to build song
 song_obj = Song()
 #TODO: Recognize all tracks and being able to print a single track
+current_time = 0
 for note in melody:
     if note.type == PATPOL.NOTE_ON:
-        if note.get_velocity() is not 0:
-            notes[note.pitch] = note.tick
-        else:
-            print ("Note: {}, Beggining: {} End: {}").format(note.pitch, notes[note.pitch], note.tick)
-            notes.pop(note.pitch)
-    elif isinstance(note, PATPOL.NOTE_OFF):
-        print ("Note: {}, Beggining: {} End: {}").format(note.pitch, notes[note.pitch], note.tick)
-        notes.pop(note.pitch)
+        if note.velocity is 0:
+            print ("Note: {}, Beggining: {} End: {}").format(note.note % 12, notes[note.note], note.time)
+            notes.pop(note.note)
+            continue
+        notes[note.note] = current_time
+    elif note.type == PATPOL.NOTE_OFF:
+        current_time += note.time
+        print ("Note: {}, Beggining: {} End: {}").format(note.note % 12, notes[note.note], current_time)
+        notes.pop(note.note)
 print (melody)
 if "--interactive" in sys.argv:
     code.interact(local=locals())

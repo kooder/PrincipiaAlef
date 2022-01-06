@@ -1,5 +1,6 @@
 import mido
 import patter_policy as PATPOL
+from musical_structures import song
 
 
 class Manager(object):
@@ -7,6 +8,15 @@ class Manager(object):
     def __init__(self,
                  path=None,
                  pattern=None):
+
+        self.length = None
+        self.tick_relative = None
+        self.numerator = None
+        self.denominator = None
+        self.metronome = None
+        self.title = None
+        self.song = None
+
         if path:
             self.pattern = mido.MidiFile(path)
         elif pattern:
@@ -26,11 +36,6 @@ class Manager(object):
 
         self.length = self.pattern.length
         self.tick_relative = self.pattern.ticks_per_beat
-
-        self.numerator = None
-        self.denominator = None
-        self.metronome = None
-        self.title = None
 
         #self.title = self.pattern
         breaker = False
@@ -54,3 +59,7 @@ class Manager(object):
                 if self.__getattribute__(lost_variable) is None:
                     error_msg += "\t%s\n" % lost_variable
             raise Exception(error_msg)
+
+    def fill_song(self):
+        self.song = song.Song(self.pattern, self.pattern.tracks)
+        return True

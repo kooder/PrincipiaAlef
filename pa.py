@@ -41,13 +41,13 @@ current_time = 0
 for note in melody:
     if note.type == PATPOL.NOTE_ON:
         if note.velocity is 0:
-            print ("Note: {}, Beggining: {} End: {}").format(note.note % 12, notes[note.note], note.time)
+            print ("Note: {}, Beggining: {} End: {}".format(note.note % 12, notes[note.note], note.time))
             notes.pop(note.note)
             continue
         notes[note.note] = current_time
     elif note.type == PATPOL.NOTE_OFF:
         current_time += note.time
-        print ("Note: {}, Beggining: {} End: {}").format(note.note % 12, notes[note.note], current_time)
+        print ("Note: {}, Beggining: {} End: {}".format(note.note % 12, notes[note.note], current_time))
         notes.pop(note.note)
 print (melody)
 if "--interactive" in sys.argv:

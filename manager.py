@@ -1,4 +1,5 @@
 import mido
+import xmltodict
 import patter_policy as PATPOL
 from musical_structures import song
 
@@ -9,8 +10,7 @@ class Manager(object):
                  path=None,
                  pattern=None):
 
-        self.length = None
-        self.tick_relative = None
+        self.time = None
         self.numerator = None
         self.denominator = None
         self.metronome = None
@@ -18,14 +18,24 @@ class Manager(object):
         self.song = None
 
         if path:
-            self.pattern = mido.MidiFile(path)
+            file_format = path.split(".")[-1]
+            if file_format in ["mid", "midi"]:
+                self.pattern = mido.MidiFile(path)
+            elif file_format == "xml":
+                # TODO: Would it be necessary to look for different encodings?
+                with open(path, 'r', encoding='utf-8') as file:
+                    my_xml = file.read()
+                self.pattern = xmltodict.parse(my_xml)
+            else:
+                raise Exception("Format of file {} unknown." % file_format)
         elif pattern:
             self.pattern = pattern
         else:
             raise Exception("Path nor Pattern were provided.")
 
     def setup(self):
-        """ Get metadata from the self pattern
+        """ TODO: FUNCTION IRRELEVANT, MOVE THIS TO EACH SECTION
+        Get metadata from the self pattern
 
         The data that is saved is:
             Title
@@ -34,7 +44,7 @@ class Manager(object):
             First Numerator with it's Denominator
         """
 
-        self.length = self.pattern.length
+        #self.length = self.pattern.length
         self.tick_relative = self.pattern.ticks_per_beat
 
         #self.title = self.pattern

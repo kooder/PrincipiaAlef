@@ -1,4 +1,3 @@
-import mido
 import sys
 import manager
 import patter_policy as PATPOL
@@ -16,26 +15,18 @@ else:
 #code.interact(local=locals())
 
 
-file = "Do-Do.mid"
+file = "Do-Do.xml"
 
 pa_manager = manager.Manager(file)
-pa_manager.setup()
-meta_data = [PATPOL.METRONOME]
-for data in meta_data:
-    print("{}: {}".format(data.capitalize(), pa_manager.__getattribute__(data)))
-print("")
+#pa_manager.setup()
 
-#print("Title: {}").format(pa_manager.title.upper())
-
-signature_data = [PATPOL.NUMERATOR, PATPOL.DENOMINATOR]
-for data in signature_data:
-    print("{}: {}".format(data.capitalize(), pa_manager.__getattribute__(data)))
+#print("Title: {}").format(pa_manager.pattern[])
 
 notes = {}
 melody = pa_manager.pattern.tracks[1]
 
 # Try to build song
-song_obj = Song()
+#song_obj = Song()
 #TODO: Recognize all tracks and being able to print a single track
 current_time = 0
 for note in melody:
